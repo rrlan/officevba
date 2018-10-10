@@ -1,0 +1,21 @@
+Sub changefontforexcel()
+Dim a As Integer
+Dim bb As Range
+For i = 1 To 10000 '行
+For j = 1 To 100 '列
+Set bb = ActiveSheet.Cells(i, j)
+For j1 = 1 To Len(bb)
+'bb.Font.Name = "Calibri"
+a = Asc(Mid(ActiveSheet.Cells(i, j), j1, 1))
+Select Case a
+Case Is < 0
+bb.Characters(j1, 1).Font.Name = "微软雅黑"
+Case 48 To 57 '数字
+bb.Characters(j1, 1).Font.Name = "Calibri"
+Case Else '英文
+bb.Characters(j1, 1).Font.Name = "Calibri"
+End Select
+Next j1
+Next j
+Next i
+End Sub
